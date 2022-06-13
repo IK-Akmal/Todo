@@ -1,0 +1,51 @@
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    width: 25px;
+    height: 25px;
+}
+
+.input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    border: 1px solid #EEEEEE;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.input:checked ~ .checkmark{
+    border: 1px solid #CDDFDC;
+}
+
+.input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkmark:after {
+    left: 10px;
+    top: 3px;
+    width: 5px;
+    height: 13px;
+    border: solid #77C0AF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(38deg);
+}

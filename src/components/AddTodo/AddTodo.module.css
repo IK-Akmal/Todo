@@ -1,0 +1,51 @@
+.addTodo {
+    background-color: white;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2);;
+}
+
+.arrowdown {
+    width: 25px;
+    height: 25px;
+    transform: rotate(-90deg);
+    transition: transform .2s linear;
+    position: relative;
+}
+
+.arrowdown:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    width: 7px;
+    height: 7px;
+    border: solid #E6E6E6;
+    border-width: 0 5px 5px 0;
+}
+
+
+
+
+.addTodo:focus-within >.arrowdown {
+    transform: rotate(0deg);
+}
+
+.input {
+    width: 100%;
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    outline: none;
+}
+
+
+
+.input::placeholder {
+    color: #E6E6E6;
+}

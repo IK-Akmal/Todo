@@ -1,0 +1,24 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.header{
+    margin-top: 32px;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-size: 76px;
+    font-weight: 100;
+    color: #E9D9D8;
+    margin: 0px;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+}
+
+.main{
+    width: 500px;
+    transition: all 1s linear;
+}

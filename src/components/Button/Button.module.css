@@ -1,0 +1,14 @@
+.button{
+    background: none;
+    border-width: 1px;
+    border-style: hidden;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #9E9E9E;
+}
+
+.active{
+    border-color: #ECD7D7;
+    border-style: solid;
+}
