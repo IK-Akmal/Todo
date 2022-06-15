@@ -9,8 +9,9 @@ const AddTodo = () => {
     const { addTodo } = useTodoContext();
 
     const handleAddTodo = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter"){
-            addTodo(value);
+        if (e.key === "Enter") {
+            if (value.trim().length > 0)
+                addTodo(value);
             setValue("");
         }
     }
