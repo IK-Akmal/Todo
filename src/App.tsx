@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css"
 import AddTodo from "./components/AddTodo/AddTodo";
 import TodoControls from "./components/TodoControls/TodoControls";
-import TodoItem from "./components/TodoItem/TodoItem";
+import TodoList from "./components/TodoList/TodoList";
 import { useTodoContext } from "./context/TodoContext";
 import { FilterMode } from "./model/ITodo";
 
@@ -17,7 +17,7 @@ function App() {
 
   const { state } = useTodoContext();
 
-  const filtered = state.filter(todo => {
+  const filteredTodos = state.filter(todo => {
     switch (filterMode) {
       case FilterMode.All: return true;
       case FilterMode.Active: return !todo.status
@@ -32,17 +32,11 @@ function App() {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <h1 className={styles.title}>
-          todos
-        </h1>
+        <h1 className={styles.title}>todos</h1>
       </header>
       <main className={styles.main}>
         <AddTodo />
-        {
-          filtered.map(todo =>
-            <TodoItem key={todo.id} {...todo} />
-          )
-        }
+        <TodoList todos={filteredTodos} />
         <TodoControls filterMode={filterMode} changeFilterMode={changeFilterMode}/>
       </main>
     </div>

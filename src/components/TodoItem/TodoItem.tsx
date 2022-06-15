@@ -14,14 +14,14 @@ const TodoItem: FC<ITodo> = ({ status: complete, id, text }) => {
 
 
     return (
-        <div className={styles.todoItem}>
+        <li className={styles.todoItem}>
             <Checkbox checked={complete} onChange={handleChangeStatus} />
             <span className={cn(styles.text, {
                 [styles.completed]: complete
             })}>
                 {text}
             </span>
-        </div>
+        </li>
     )
 }
 
