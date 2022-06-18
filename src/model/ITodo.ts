@@ -1,11 +1,11 @@
 export interface ITodo {
-    id: string;
-    text: string;
-    status: boolean;
+  id: string;
+  text: string;
+  status: boolean;
 }
 
 export enum FilterMode {
-    All,
-    Active,
-    Completed
+  All,
+  Active,
+  Completed,
 }

@@ -1,8 +1,10 @@
 import { ChangeEvent, useState, KeyboardEvent } from 'react';
-import styles from './AddTodo.module.css';
+
 import { useTodoContext } from '../../context/TodoContext';
 
-function AddTodo() {
+import styles from './AddTodo.module.css';
+
+const AddTodo = () => {
   const [value, setValue] = useState<string>('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value);
@@ -28,6 +30,6 @@ function AddTodo() {
       />
     </div>
   );
-}
+};
 
 export default AddTodo;

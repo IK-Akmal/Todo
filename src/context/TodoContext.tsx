@@ -1,20 +1,21 @@
 import {
-  createContext, FC, ReactNode, useContext, useState,
+  createContext, FC, ReactNode, useContext, useMemo, useState,
 } from 'react';
+
 import { ITodo } from '../model/ITodo';
 
 type TodoContextType = {
 
-    state: ITodo[],
-    addTodo(text: string): void;
-    updateStatus(id: string, status: boolean): void;
-    removeTodo(id: string): void;
-    removeAllCompletedTodos(): void;
-}
+  state: ITodo[],
+  addTodo(text: string): void;
+  updateStatus(id: string, status: boolean): void;
+  removeTodo(id: string): void;
+  removeAllCompletedTodos(): void;
+};
 
-type TodoContexttTypeProps = {
-    children?: ReactNode
-}
+export type TodoContexttTypeProps = {
+  children: ReactNode
+};
 
 export const TodoContext = createContext<TodoContextType | null>(null);
 
@@ -46,11 +47,19 @@ export const TodoContextProvider: FC<TodoContexttTypeProps> = ({ children }) => 
     setState(state.filter((todo) => !todo.status));
   }
 
+  const TodoContextProviderValueMemo = useMemo(
+    () => ({
+      state,
+      addTodo,
+      updateStatus,
+      removeTodo,
+      removeAllCompletedTodos,
+    }),
+    [state],
+  );
+
   return (
-    <TodoContext.Provider value={{
-      state, addTodo, updateStatus, removeTodo, removeAllCompletedTodos,
-    }}
-    >
+    <TodoContext.Provider value={TodoContextProviderValueMemo}>
       {children}
     </TodoContext.Provider>
   );

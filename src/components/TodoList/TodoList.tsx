@@ -1,11 +1,13 @@
 import { FC } from 'react';
+
 import { ITodo } from '../../model/ITodo';
 import TodoItem from '../TodoItem/TodoItem';
+
 import styles from './TodoList.module.css';
 
 type TodoListPropsType = {
-    todos: ITodo[];
-}
+  todos: ITodo[];
+};
 
 const TodoList: FC<TodoListPropsType> = ({ todos }) => (
   <ul className={styles.todoList}>

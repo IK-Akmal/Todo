@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import styles from './App.module.css';
 import AddTodo from './components/AddTodo/AddTodo';
 import TodoControls from './components/TodoControls/TodoControls';
@@ -6,7 +7,7 @@ import TodoList from './components/TodoList/TodoList';
 import { useTodoContext } from './context/TodoContext';
 import { FilterMode } from './model/ITodo';
 
-function App() {
+const App = () => {
   const [filterMode, setFilterMode] = useState<FilterMode>(FilterMode.All);
 
   const changeFilterMode = (mode: FilterMode): void => {
@@ -37,6 +38,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

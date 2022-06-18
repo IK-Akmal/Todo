@@ -1,29 +1,34 @@
 import { FC } from 'react';
 import cn from 'classnames';
+
 import { useTodoContext } from '../../context/TodoContext';
 import { FilterMode } from '../../model/ITodo';
 import Button from '../Button/Button';
+
 import styles from './TodoControls.module.css';
 
 type TodoControlsTypeProps = {
-    changeFilterMode: (mode: FilterMode) => void
-    filterMode: FilterMode
-}
+  changeFilterMode: (mode: FilterMode) => void
+  filterMode: FilterMode
+};
 
 const TodoControls: FC<TodoControlsTypeProps> = ({ changeFilterMode, filterMode }) => {
   const { state, removeAllCompletedTodos } = useTodoContext();
   const activeLength = state.filter((todo) => !todo.status).length;
 
-  const stateMessage = activeLength > 0
-    ? `${activeLength} ${activeLength > 1 ? 'items' : 'item'} left`
-    : state.length > 0
-      ? 'All is done'
-      : 'List is empty';
-
+  const stateMessage = () => {
+    if (activeLength > 0) {
+      return `${activeLength} ${activeLength > 1 ? 'items' : 'item'} left`;
+    }
+    if (state.length > 0) {
+      return 'All is done';
+    }
+    return 'List is empty';
+  };
   return (
     <>
       <div className={styles.todoControls}>
-        <span>{stateMessage}</span>
+        <span>{stateMessage()}</span>
         <div className={styles.btnFilterWrapper}>
           <Button
             onClick={() => changeFilterMode(FilterMode.All)}

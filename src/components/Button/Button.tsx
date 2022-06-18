@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-props-no-multi-spaces */
 import { FC } from 'react';
 import cn from 'classnames';
+
 import { ButtonProps } from './Button.props';
 import styles from './Button.module.css';
 
@@ -10,6 +12,7 @@ const Button: FC<ButtonProps> = ({
     className={cn(styles.button, className, {
       [styles.active]: active,
     })}
+    type="button"
     {...props}
   >
     {children}

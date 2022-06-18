@@ -1,8 +1,10 @@
 import { ChangeEvent, FC } from 'react';
 import cn from 'classnames';
-import styles from './TodoItem.module.css';
+
 import { useTodoContext } from '../../context/TodoContext';
 import Checkbox from '../Checkbox/Checkbox';
+
+import styles from './TodoItem.module.css';
 import { TodoItemProps } from './TodoItem.props';
 
 const TodoItem: FC<TodoItemProps> = ({ status: complete, id, text }) => {
@@ -13,7 +15,7 @@ const TodoItem: FC<TodoItemProps> = ({ status: complete, id, text }) => {
 
   return (
     <li className={styles.todoItem}>
-      <Checkbox checked={complete} onChange={handleChangeStatus} />
+      <Checkbox id={id} checked={complete} onChange={handleChangeStatus} />
       <span className={cn(styles.text, {
         [styles.completed]: complete,
       })}
