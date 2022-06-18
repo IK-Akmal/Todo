@@ -1,28 +1,27 @@
 import { ChangeEvent, FC } from 'react';
-import { ITodo } from '../../model/ITodo';
-import styles from "./TodoItem.module.css";
-import cn from "classnames";
+import cn from 'classnames';
+import styles from './TodoItem.module.css';
 import { useTodoContext } from '../../context/TodoContext';
 import Checkbox from '../Checkbox/Checkbox';
+import { TodoItemProps } from './TodoItem.props';
 
-const TodoItem: FC<ITodo> = ({ status: complete, id, text }) => {
+const TodoItem: FC<TodoItemProps> = ({ status: complete, id, text }) => {
+  const { updateStatus } = useTodoContext();
+  const handleChangeStatus = (e: ChangeEvent<HTMLInputElement>) => {
+    updateStatus(id, e.target.checked);
+  };
 
-    const { updateStatus } = useTodoContext();
-    const handleChangeStatus = (e: ChangeEvent<HTMLInputElement>) => {
-        updateStatus(id, e.target.checked);
-    }
+  return (
+    <li className={styles.todoItem}>
+      <Checkbox checked={complete} onChange={handleChangeStatus} />
+      <span className={cn(styles.text, {
+        [styles.completed]: complete,
+      })}
+      >
+        {text}
+      </span>
+    </li>
+  );
+};
 
-
-    return (
-        <li className={styles.todoItem}>
-            <Checkbox checked={complete} onChange={handleChangeStatus} />
-            <span className={cn(styles.text, {
-                [styles.completed]: complete
-            })}>
-                {text}
-            </span>
-        </li>
-    )
-}
-
-export default TodoItem
+export default TodoItem;
