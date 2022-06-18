@@ -13,6 +13,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
+        "project":["tsconfig.json"],
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
@@ -20,5 +21,22 @@
         "react",
         "@typescript-eslint"
     ],
-    "rules": {}
+    "rules": {
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index",
+                    "object",
+                    "type"
+                ],
+                "newlines-between": "always"
+            }
+        ]
+    }
 }
